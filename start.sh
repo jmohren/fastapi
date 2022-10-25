@@ -1,4 +1,4 @@
-server_domain_or_IP=$("curl ipinfo.io/ip")
+server_domain_or_IP="$(curl ipinfo.io/ip)"
 echo $server_domain_or_IP
 
 cd
