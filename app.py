@@ -4,10 +4,15 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+import pickle 
+import numpy as np
 
 class Input(BaseModel):
-    name: str
-    age: int
+    fea1: float
+    fea2: float
+    fea3: float
+
+pickled_model = pickle.load(open('iso_forest_model.sav', 'rb'))
 
 app = FastAPI()
 
@@ -27,5 +32,5 @@ async def read_root():
 
 @app.post("/test")
 def test(input: Input):
-    da = input.age*2
-    return {"age": da}
+    pred=int(pickled_model.predict(np.array([input.fea1, input.fea2, input.fea3]).reshape(1, -1)))
+    return {"pred": pred}
