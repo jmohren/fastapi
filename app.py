@@ -12,7 +12,7 @@ import numpy as np
     fea2: float
     fea3: float """
 
-pickled_model = pickle.load(open('iso_forest_model.sav', 'rb'))
+pickled_model = pickle.load(open('model/iso_forest_model.sav', 'rb'))
 
 Input=create_model('Input', **{f: (float, ...) for f in pickled_model.feature_names_in_})
 
