@@ -3,16 +3,18 @@
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, create_model
 import pickle 
 import numpy as np
 
-class Input(BaseModel):
+""" class Input(BaseModel):
     fea1: float
     fea2: float
-    fea3: float
+    fea3: float """
 
 pickled_model = pickle.load(open('iso_forest_model.sav', 'rb'))
+
+Input=create_model('Input', **{f: (float, ...) for f in pickled_model.feature_names_in_})
 
 app = FastAPI()
 
@@ -28,9 +30,9 @@ app.add_middleware(
 
 @app.get("/", tags=["Root"])
 async def read_root():
-    return {"message": "TestWelcome to the API!"}
+    return {"message": "Welcome"}
 
-@app.post("/test")
-def test(input: Input):
-    pred=int(pickled_model.predict(np.array([input.fea1, input.fea2, input.fea3]).reshape(1, -1)))
+@app.post("/predict")
+def predict(input: Input):
+    pred=int(pickled_model.predict(np.array([list(dict(input).values())])))
     return {"pred": pred}
