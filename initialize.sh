@@ -10,16 +10,16 @@ source env/bin/activate
 pip install -r requirements.txt
 
 #Move gunicorn.socket file
-sudo mv api/files/gunicorn.socket ~/etc/systemd/system
+sudo mv files/gunicorn.socket /etc/systemd/system/
 
 #Move gunicorn.service file
-sudo mv api/files/gunicorn.service ~/etc/systemd/system
+sudo mv files/gunicorn.service /etc/systemd/system/
 
 sudo systemctl start gunicorn.socket
 sudo systemctl enable gunicorn.socket
 
 #Move api file
-sudo mv api/files/api ~/etc/nginx/sites-enabled
+sudo mv files/api /etc/nginx/sites-enabled/
 
 sudo systemctl daemon-reload
 sudo systemctl restart gunicorn
