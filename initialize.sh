@@ -10,7 +10,7 @@ source env/bin/activate
 pip install -r requirements.txt
 
 #Create gunicorn.socket file
-cat > /etc/systemd/system/gunicorn.socket << ENDOFFILE
+sudo cat > /etc/systemd/system/gunicorn.socket << ENDOFFILE
 [Unit]
 Description=gunicorn socket
 
@@ -22,7 +22,7 @@ WantedBy=sockets.target
 ENDOFFILE
 
 #Create gunicorn.service file
-cat > /etc/systemd/system/gunicorn.service << ENDOFFILE
+sudo cat > /etc/systemd/system/gunicorn.service << ENDOFFILE
 [Unit]
 Description=gunicorn daemon
 Requires=gunicorn.socket
@@ -47,7 +47,7 @@ sudo systemctl start gunicorn.socket
 sudo systemctl enable gunicorn.socket
 
 #Create api file
-cat > /etc/nginx/sites-enabled/api << ENDOFFILE
+sudo cat > /etc/nginx/sites-enabled/api << ENDOFFILE
 server {
     listen 80;
     listen 443 ssl;
@@ -64,3 +64,5 @@ ENDOFFILE
 sudo systemctl daemon-reload
 sudo systemctl restart gunicorn
 sudo systemctl restart nginx
+
+./start.sh
