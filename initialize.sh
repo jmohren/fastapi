@@ -2,9 +2,8 @@ sudo apt update
 sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl
 sudo -H pip3 install --upgrade pip
 
-cd api
-
 #Create env & install requirements
+pip install virtualenv
 virtualenv env
 source env/bin/activate
 pip install -r requirements.txt
