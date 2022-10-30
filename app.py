@@ -7,11 +7,6 @@ from pydantic import BaseModel, create_model
 import pickle 
 import numpy as np
 
-""" class Input(BaseModel):
-    fea1: float
-    fea2: float
-    fea3: float """
-
 pickled_model = pickle.load(open('model/iso_forest_model.sav', 'rb'))
 
 Input=create_model('Input', **{f: (float, ...) for f in pickled_model.feature_names_in_})
