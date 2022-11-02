@@ -30,8 +30,10 @@ sudo systemctl enable gunicorn.socket
 #Move api file
 sudo cp files/api /etc/nginx/sites-enabled/
 
-sudo systemctl restart gunicorn
+print('before')
 sudo systemctl daemon-reload
+sudo systemctl restart gunicorn
 sudo systemctl restart nginx
+print('after')
 
 ./start.sh
