@@ -2,6 +2,8 @@ sudo apt update
 sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl
 #sudo -H pip3 install --upgrade pip
 
+sudo cp api/git-init.sh ~/
+
 #SSL certificate
 sudo apt-get install openssl
 sudo mkdir ~/etc/nginx/ssl
