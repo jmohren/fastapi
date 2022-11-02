@@ -11,8 +11,6 @@ pip install -r requirements.txt
 #Move gunicorn.socket file
 sudo cp files/gunicorn.socket /etc/systemd/system/
 
-sudo systemctl daemon-reload
-
 #Move gunicorn.service file
 sudo cp files/gunicorn.service /etc/systemd/system/
 
