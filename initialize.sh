@@ -1,10 +1,11 @@
-export NEEDRESTART_MODE=a
-export DEBIAN_FRONTEND=noninteractive
+#export NEEDRESTART_MODE=a
+#export DEBIAN_FRONTEND=noninteractive
+#Does not work!!!!
 
 sudo apt -y update
 sudo apt -y install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl
-#sudo -H pip3 install --upgrade pip
 
+#For debugging
 sudo cp api/git-init.sh ../
 
 #SSL certificate
