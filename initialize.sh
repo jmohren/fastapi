@@ -7,8 +7,8 @@ sudo apt-get install openssl
 sudo mkdir ~/etc/nginx/ssl
 sudo openssl req -batch -x509 -nodes -days 365 \
 -newkey rsa:2048 \
--keyout /etc/nginx/ssl/server.key \
--out /etc/nginx/ssl/server.crt
+-keyout ~/etc/nginx/ssl/server.key \
+-out ~/etc/nginx/ssl/server.crt
 
 #Create env & install requirements
 sudo apt-get install python3-virtualenv
