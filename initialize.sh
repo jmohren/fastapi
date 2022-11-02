@@ -2,6 +2,14 @@ sudo apt update
 sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl
 #sudo -H pip3 install --upgrade pip
 
+#SSL certificate
+sudo apt-get install openssl
+sudo mkdir ~/etc/nginx/ssl
+sudo openssl req -batch -x509 -nodes -days 365 \
+-newkey rsa:2048 \
+-keyout /etc/nginx/ssl/server.key \
+-out /etc/nginx/ssl/server.crt
+
 #Create env & install requirements
 sudo apt-get install python3-virtualenv
 virtualenv env
